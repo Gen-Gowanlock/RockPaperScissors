@@ -1,0 +1,114 @@
+#Grace Gowanlock
+#Rock, Paper, Scissors Program
+#Python
+
+#Player types rock, paper, or scissors
+#computer randomly selects one
+#then prints results
+
+#for computer:
+#rock == 1
+#paper == 2
+#scissors == 3
+
+import random
+
+#variables used
+player = ""
+choice = ""
+computer = 0
+
+result1 = "paper beats rock"
+result2 = "rock beats scissors"
+result3 = "scissors beats paper"
+result4 = "Tie"
+
+keepgoing = True
+tie = False
+validInput = False
+
+#while loop continues until player tells it to stop
+while (keepgoing):
+
+    print("Rock, Paper, or Scissors?")
+    print("")
+
+    #player input will be turned into lowercase
+    player = (raw_input("Type choice: ")).lower()
+    print("")
+
+    #computer selects random number from 1-3
+    computer = random.randint(1,3)
+
+    #prints the players choice vs the computer's random choice
+    if (computer == 1):
+        print player + " vs rock"
+    elif (computer == 2):
+        print(player + " vs paper")
+    else:
+        print(player + " vs scissors")
+
+    print("")
+
+    #prints the result, if a tie occurs sets boolean tie equal to true and
+    #plays again
+
+    if (player == "rock" and computer == 2):
+        print(result1)
+        tie = False
+        print ("You Lose!")
+    elif (player == "rock" and computer == 3):
+        print(result2)
+        tie = False
+        print ("You Lose!")
+    elif (player == "paper" and computer == 1):
+        print(result1)
+        tie = False
+        print ("Player Wins!")
+    elif (player == "paper" and computer == 3):
+        print(result3)
+        tie = False
+        print ("You Lose!")
+    elif (player == "scissors" and computer == 1):
+        print(result2)
+        tie = False
+        print ("You Lose!")
+    elif (player == "scissors" and computer == 2):
+        print(result3)
+        tie = False
+        print("Player Wins!")
+    elif ((player == "rock" and computer == 1) or
+          (player == "paper" and computer == 2) or
+          (player == "scissors" and computer == 3)):
+        tie = True
+        print(result4)
+    else:
+        print("Spelling matters!")
+        #set tie = true so player will be prompted to type another choice
+        tie = True
+
+    print("")
+
+    #prompts player if they want to play again if tie did not occur
+    if (tie == False):
+        while (validInput == False):
+            choice = (raw_input("Would you like to play again? y/n ").lower())
+            if (choice == "n"):
+                keepgoing = False
+                validInput = True
+                print ("Goodbye")
+                print("")
+            elif (choice == "y"):
+                validInput = True
+                print("")
+                print("--------------------")
+                print("")
+            else:
+                #validInput remains false and player is prompted again
+                print("Again?")
+        #must set validInput back to false
+        #if there are two ties in a row, the while loop must run again
+        validInput = False
+        
+    
+              
